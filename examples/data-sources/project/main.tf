@@ -11,6 +11,7 @@ provider "gitlab" {
 }
 
 data "gitlab_project" "this" {
+  path_with_namespace = "gitlab-org/api/client-go"
 }
 
 output "project" {
