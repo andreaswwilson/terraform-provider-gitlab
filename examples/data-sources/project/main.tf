@@ -6,10 +6,6 @@ terraform {
   }
 }
 
-provider "gitlab" {
-  token = "glpat-mylittletoken" // BYTT MEG ELLER BRUK GITLAB_TOKEN miljø-variabel
-}
-
 data "gitlab_project" "this" {
   path_with_namespace = "gitlab-org/api/client-go"
 }

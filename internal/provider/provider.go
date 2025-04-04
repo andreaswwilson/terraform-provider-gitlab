@@ -118,6 +118,7 @@ func (p *GitlabProvider) EphemeralResources(ctx context.Context) []func() epheme
 func (p *GitlabProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewCurrentUserDataSource,
+		NewProjectDataSource,
 	}
 }
 
