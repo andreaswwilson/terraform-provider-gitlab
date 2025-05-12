@@ -97,11 +97,9 @@ func (r *ProjectResource) Create(ctx context.Context, req resource.CreateRequest
 	if resp.Diagnostics.HasError() {
 		return
 	}
-
-	data.Name = types.StringValue(data.Name.ValueString())
-
 	opt := &gitlab.CreateProjectOptions{
-		Name: data.Name.ValueStringPointer(),
+		Name:        data.Name.ValueStringPointer(),
+		Description: data.Description.ValueStringPointer(),
 	}
 	project, _, err := r.client.Projects.CreateProject(opt)
 	if err != nil {
@@ -134,7 +132,7 @@ func (r *ProjectResource) Read(ctx context.Context, req resource.ReadRequest, re
 	}
 	tflog.Info(ctx, fmt.Sprintf("%+v", project))
 	data.ID = types.Int64Value(int64(project.ID))
-	data.Description = types.StringValue(project.Description)
+	// data.Description = types.StringValue(project.Description)
 
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)

@@ -7,5 +7,6 @@ terraform {
 }
 
 resource "gitlab_project" "this" {
-  name = "abc1234"
+  name        = "abc1234"
+  description = "hehe"
 }

@@ -61,7 +61,7 @@ func (p *GitlabProvider) Configure(ctx context.Context, req provider.ConfigureRe
 
 	if data.Token.IsUnknown() {
 		resp.Diagnostics.AddAttributeError(
-			path.Root("token"), "Unkown token", "The provider cannot create the client as there is an unkown configuration value for the token. "+
+			path.Root("token"), "Unknown token", "The provider cannot create the client as there is an unknown configuration value for the token. "+
 				"Either target apply the source of the value first, set the value statically in the configration, or use the GITLAB_TOKEN environmental variable.",
 		)
 	}
@@ -69,6 +69,7 @@ func (p *GitlabProvider) Configure(ctx context.Context, req provider.ConfigureRe
 		return
 	}
 
+	// nolint:misspell
 	// Hent data fra miljøvariabel
 	token := os.Getenv("GITLAB_TOKEN")
 
